@@ -1,0 +1,28 @@
+{
+  "Departamentos": [
+    {
+      "nomDepartamento": "norte de santander",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "nomDepartamento": "Cundinamarca"
+    }
+  ],
+  "Ciudades": [
+    {
+      "nomPuntoAct": "",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "nomCiudad": "Cajica",
+      "departamentoId": 2,
+      "imagen": "https://colombia.com/cajica.jpg",
+      "coordenadas": {
+        "lat": 4,
+        "lon": 72
+      }
+    }
+  ]
+}

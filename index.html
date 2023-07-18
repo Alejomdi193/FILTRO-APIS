@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudades Campus</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <div class="d-flex" style="width: 20%;">
+    <div id="div2">
+      <div class="menu">
+        <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-start fs-1">
+          <li class="d-flex gap-3" style="display:flex; align-items: center;"></li>
+          <p class="campus">Conozca Con Campus</p> 
+          <p>-----------------------------</p>
+        </ul>
+        <h2 class="texcolor3">Aplicación con tema personalizado</h2>
+        <button onclick="cambiarTema('light')">Tema de atardecer</button><br><br>
+        <button onclick="cambiarTema('dark')">Tema de noche</button><br><br>
+        <button onclick="shiftTema()">Intercambiar</button>
+      </div>
+    </div>
+  </div>
+
+  <style id="customTheme"></style>
+
+  <div class="sub-menu justify-content-between menu-cuenta">
+    <div class="divcueta border-bottom">
+      <div class="ps-2">
+          <h2 class="texcolor3">Gestor de Departamentos</h2>
+      </div>
+    </div>
+    <br>
+
+    <div data-bs-theme="black">
+      <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 bg-white p-4 rounded">
+              <form class="col-12 --bs-dark-border-subtle" id="form">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nombre del Departamento</label>
+                  <input type="text" class="form-control" id="nomDepartamento" name="nomDepartamento">
+                </div>
+                <input type="submit" class="btn btn-primary" data-accion="Agregar" value="Agregar">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <table class="table border-bottom mt-4" id="tablaDepartamento">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre del departamento</th>
+              <th scope="col">Eliminar</th>
+              <th scope="col">Actualizar</th>
+            </tr>
+          </thead>
+          <tbody class="cuerpoDepartament" id="cuerpoDepartament"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalModificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Departamento</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="col-12" id="formUpdate">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre del Departamento</label>
+                <input type="text" class="form-control" id="nomDepartamento" name="nomDepartamento">
+              </div>
+              <input type="submit" class="btn btn-primary" data-accion="update" value="Actualizar">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="divcueta border-bottom">
+      <div class="ps-2">
+        <h2 class="texcolor3">Gestor de Ciudades</h2>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+      <div class="col-12 bg-white p-4 rounded">
+        <form class="col-12" id="formPunto">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre de la ciudad</label>
+            <input type="text" class="form-control" id="nomCiudad" name="nomCiudad">
+          </div>
+          <div class="mb-3">
+            <label for="cateDepartamentos" class="form-label">Departamento elegido:</label>
+            <select class="form-select" aria-label="Default select example" id="cateDepartamentos"></select>
+            <option value="1">1</option>
+            <option value="1">2</option>
+          </div>
+          <input type="submit" class="btn btn-primary" data-accion="AgregarPunto" value="Agregar Punto">
+        </form>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <table class="table" id="tablaCiudad">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre de la ciudad</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Eliminar</th>
+              <th scope="col">Actualizar</th>
+            </tr>
+          </thead>
+          <tbody class="cuerpoCiudad" id="cuerpoCiudad"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalModificar2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel2">Editando Ciudad</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="col-12" id="formUpdatePunto">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre de la ciudad</label>
+                <input type="text" class="form-control" id="nomPuntoAct" name="nomPuntoAct">
+              </div>
+              <div class="mb-3">
+                <label for="cateRutas" class="form-label">Ciudad a cambiar:</label>
+                <select class="form-select" aria-label="Default select example" id="cateRutasModal">
+                  <option selected>...</option>
+                </select>
+              </div>
+              <input type="submit" class="btn btn-primary" data-accion="updatePunto" value="Actualizar">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function cambiarTema(theme) {
+      var customTheme = document.getElementById('customTheme');
+      if (theme === 'light') {
+        customTheme.textContent = `
+          body {
+            background-image: url("6665e4948cbbd45a9f33d47c7e86f1e3.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+          }
+        `;
+      } else if (theme === 'dark') {
+        customTheme.textContent = `
+          body {
+            background-image: url("./Unknown.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+          }
+        `;
+      }
+      localStorage.setItem('theme', theme);
+    }
+
+    function shiftTema() {
+      var miTema = localStorage.getItem('theme');
+      if (miTema == 'light') {
+        cambiarTema('dark');
+      } else if (miTema == 'dark') {
+        cambiarTema('light');
+      }
+    }
+
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      cambiarTema(savedTheme);
+    }
+  </script>
+
+  <script src="./js/mainCiudad.js" type="module"></script>  
+  <script src="./js/main.js" type="module"></script>  
+  <script src="./js/appCiudades.js" type="module"></script>   
+  <script src="./js/app.js" type="module"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
